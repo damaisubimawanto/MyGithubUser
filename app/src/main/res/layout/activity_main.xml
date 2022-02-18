@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
+
+        <variable
+            name="view"
+            type="com.damai.mygithubuser.presentation.MainPageView" />
+
+        <variable
+            name="vm"
+            type="com.damai.mygithubuser.presentation.MainPageViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
