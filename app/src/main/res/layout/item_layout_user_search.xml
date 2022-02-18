@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_20sdp"
+        android:paddingStart="@dimen/_20sdp"
+        android:paddingEnd="@dimen/_20sdp"
+        android:paddingBottom="@dimen/_13sdp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/ivUserThumbnail"
+            android:layout_width="@dimen/_27sdp"
+            android:layout_height="@dimen/_27sdp"
+            android:contentDescription="@string/content_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvUserDisplayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/neutral_900"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivUserThumbnail"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Wang Shi Eun" />
+
+        <TextView
+            android:id="@+id/tvUserNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_7sdp"
+            android:textColor="@color/neutral_900"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvUserDisplayName"
+            app:layout_constraintStart_toEndOf="@+id/tvUserDisplayName"
+            app:layout_constraintTop_toTopOf="@+id/tvUserDisplayName"
+            tools:text="\@wangshieun" />
+
+        <TextView
+            android:id="@+id/tvUserJobPosition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_3sdp"
+            android:textColor="@color/neutral_900"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvUserDisplayName"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserDisplayName"
+            tools:text="Director of Netshare Company" />
+
+        <TextView
+            android:id="@+id/tvUserLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_10sdp"
+            android:textColor="@color/neutral_700"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintStart_toStartOf="@+id/tvUserJobPosition"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserJobPosition"
+            tools:text="Taipei, Taiwan" />
+
+        <TextView
+            android:id="@+id/tvUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingStart="@dimen/_13sdp"
+            android:textColor="@color/neutral_700"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintStart_toEndOf="@+id/tvUserLocation"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserJobPosition"
+            tools:text="wangshi@mihoyo.com" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

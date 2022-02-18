@@ -53,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_7sdp"
+            android:visibility="gone"
             app:cardCornerRadius="@dimen/_8sdp"
             app:cardUseCompatPadding="true"
             app:layout_constrainedHeight="true"
@@ -60,31 +61,36 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewUserSearchBackground">
+            app:layout_constraintTop_toBottomOf="@+id/viewUserSearchBackground"
+            tools:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:padding="@dimen/_13sdp">
+                android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvUserList"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    app:layout_constrainedHeight="true"
                     app:layout_constraintBottom_toTopOf="@+id/cvLoading"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_layout_user_search"
+                    tools:itemCount="10" />
 
                 <include
                     android:id="@+id/cvLoading"
                     android:layout_width="@dimen/_27sdp"
                     android:layout_height="@dimen/_27sdp"
+                    android:layout_marginBottom="@dimen/_13sdp"
+                    android:visibility="gone"
                     layout="@layout/item_layout_loading_hour_glass"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:visibility="visible" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
