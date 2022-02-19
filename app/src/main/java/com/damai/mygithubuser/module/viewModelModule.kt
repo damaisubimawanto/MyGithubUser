@@ -1,6 +1,6 @@
 package com.damai.mygithubuser.module
 
-import com.damai.mygithubuser.presentation.MainPageViewModel
+import com.damai.mygithubuser.presentation.main.MainPageViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

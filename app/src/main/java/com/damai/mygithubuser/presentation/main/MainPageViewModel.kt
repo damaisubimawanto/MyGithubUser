@@ -1,4 +1,4 @@
-package com.damai.mygithubuser.presentation
+package com.damai.mygithubuser.presentation.main
 
 import androidx.lifecycle.MutableLiveData
 import com.damai.mygithubuser.core.BaseViewModel

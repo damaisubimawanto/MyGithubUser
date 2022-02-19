@@ -1,4 +1,4 @@
-package com.damai.mygithubuser.presentation
+package com.damai.mygithubuser.presentation.main
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -7,7 +7,7 @@ import com.damai.mygithubuser.core.BaseActivity
 import com.damai.mygithubuser.core.ViewDataBindingOwner
 import com.damai.mygithubuser.core.showToast
 import com.damai.mygithubuser.databinding.ActivityMainBinding
-import com.damai.mygithubuser.presentation.adapter.UserSearchAdapter
+import com.damai.mygithubuser.presentation.main.adapter.UserSearchAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<ActivityMainBinding>,

@@ -9,11 +9,11 @@
 
         <variable
             name="view"
-            type="com.damai.mygithubuser.presentation.MainPageView" />
+            type="com.damai.mygithubuser.presentation.main.MainPageView" />
 
         <variable
             name="vm"
-            type="com.damai.mygithubuser.presentation.MainPageViewModel" />
+            type="com.damai.mygithubuser.presentation.main.MainPageViewModel" />
 
     </data>
 
@@ -25,7 +25,7 @@
         android:paddingStart="@dimen/_18sdp"
         android:paddingEnd="@dimen/_16sdp"
         android:paddingBottom="@dimen/_13sdp"
-        tools:context=".presentation.MainActivity">
+        tools:context=".presentation.main.MainActivity">
 
         <View
             android:id="@+id/viewUserSearchBackground"
