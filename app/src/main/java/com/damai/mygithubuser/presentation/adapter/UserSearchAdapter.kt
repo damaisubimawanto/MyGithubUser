@@ -1,5 +1,6 @@
 package com.damai.mygithubuser.presentation.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,9 @@ import com.squareup.picasso.Picasso
 /**
  * Created by damai.subimawanto on 2/18/2022.
  */
-class UserSearchAdapter : ListAdapter<UserSearchModel, UserSearchAdapter.UserSearchViewHolder>(
+class UserSearchAdapter(
+    private val mCallback: Callback
+) : ListAdapter<UserSearchModel, UserSearchAdapter.UserSearchViewHolder>(
     DIFF_UTIL
 ) {
 
@@ -73,6 +76,28 @@ class UserSearchAdapter : ListAdapter<UserSearchModel, UserSearchAdapter.UserSea
                     .transform(DefaultCircleTransform())
                     .into(ivUserThumbnail)
             }
+
+            when (data.isDataFetched) {
+                null -> {
+                    val uri = try {
+                        Uri.parse(data.url)
+                    } catch (e: NullPointerException) {
+                        null
+                    }
+                    uri?.lastPathSegment?.let { username ->
+                        mCallback.needFetchData(
+                            id = data.id,
+                            username = username
+                        )
+                        data.isDataFetched = false
+                    }
+                }
+                else -> {}
+            }
         }
+    }
+
+    interface Callback {
+        fun needFetchData(id: Int, username: String)
     }
 }

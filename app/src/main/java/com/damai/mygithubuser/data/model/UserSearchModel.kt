@@ -5,11 +5,14 @@ package com.damai.mygithubuser.data.model
  */
 data class UserSearchModel(
     val id: Int,
-    val displayName: String?,
-    val nickname: String?,
-    val jobPosition: String?,
-    val location: String?,
-    val email: String?,
-    val thumbnail: String?,
-    var url: String?
+    var displayName: String?,
+    var nickname: String?,
+    var jobPosition: String?,
+    var location: String?,
+    var email: String?,
+    var thumbnail: String?,
+    var url: String?,
+
+    // For adapter
+    var isDataFetched: Boolean? = null
 )

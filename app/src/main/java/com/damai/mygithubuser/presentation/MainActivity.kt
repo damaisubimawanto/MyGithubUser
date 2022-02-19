@@ -11,7 +11,7 @@ import com.damai.mygithubuser.presentation.adapter.UserSearchAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<ActivityMainBinding>,
-    MainPageView {
+    MainPageView, UserSearchAdapter.Callback {
     private lateinit var userSearchAdapter: UserSearchAdapter
 
     override var originalBinding: ActivityMainBinding? = null
@@ -23,8 +23,19 @@ class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<Act
         setupRvUserSearchAdapter()
         observeUserListData()
         observeUserListError()
+        observeNotifyIndex()
 
         viewModel.getUserList()
+    }
+
+    /**
+     * Callback from UserSearchAdapter.Callback.
+     */
+    override fun needFetchData(id: Int, username: String) {
+        viewModel.getUserInfo(
+            id = id,
+            username = username
+        )
     }
 
     private fun observeUserListData() {
@@ -51,9 +62,19 @@ class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<Act
         }
     }
 
+    private fun observeNotifyIndex() {
+        observeData(viewModel.notifyItemIndex) { result ->
+            result?.let {
+                if (it > -1) {
+                    userSearchAdapter.notifyItemChanged(it)
+                }
+            }
+        }
+    }
+
     private fun setupRvUserSearchAdapter() {
         binding.rvUserList.apply {
-            userSearchAdapter = UserSearchAdapter()
+            userSearchAdapter = UserSearchAdapter(mCallback = this@MainActivity)
             layoutManager = LinearLayoutManager(
                 this@MainActivity,
                 LinearLayoutManager.VERTICAL,

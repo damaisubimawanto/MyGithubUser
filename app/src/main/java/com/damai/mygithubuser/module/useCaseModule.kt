@@ -1,6 +1,7 @@
 package com.damai.mygithubuser.module
 
 import com.damai.mygithubuser.domain.GetUserListUseCase
+import com.damai.mygithubuser.domain.GetUserSearchInfoUseCase
 import org.koin.dsl.module
 
 /**
@@ -8,4 +9,5 @@ import org.koin.dsl.module
  */
 val useCaseModule = module {
     single { GetUserListUseCase(get()) }
+    single { GetUserSearchInfoUseCase(get()) }
 }
