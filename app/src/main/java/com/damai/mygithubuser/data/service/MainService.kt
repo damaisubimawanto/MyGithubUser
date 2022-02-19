@@ -8,5 +8,5 @@ import retrofit2.http.GET
  */
 interface MainService {
     @GET("/users")
-    suspend fun getUserList(): UserListModel
+    suspend fun getUserList(): List<UserListModel>
 }

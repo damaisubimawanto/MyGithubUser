@@ -1,6 +1,7 @@
 package com.damai.mygithubuser.presentation.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -43,20 +44,28 @@ class UserSearchAdapter : ListAdapter<UserSearchModel, UserSearchAdapter.UserSea
     }
 
     override fun onBindViewHolder(holder: UserSearchViewHolder, position: Int) {
-        holder.bindData(getItem(position))
+        holder.bindData(
+            data = getItem(position),
+            isSeperatorGone = position == itemCount
+        )
     }
 
     inner class UserSearchViewHolder(
         private val binding: ItemLayoutUserSearchBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
-        fun bindData(data: UserSearchModel) {
+        fun bindData(data: UserSearchModel, isSeperatorGone: Boolean) {
             binding.apply {
                 tvUserDisplayName.text = data.displayName
                 tvUserNickname.text = data.nickname
                 tvUserJobPosition.text = data.jobPosition
                 tvUserLocation.text = data.location
                 tvUserEmail.text = data.email
+                seperator.visibility = if (isSeperatorGone) {
+                    View.GONE
+                } else {
+                    View.VISIBLE
+                }
             }
         }
     }

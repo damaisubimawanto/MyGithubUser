@@ -14,8 +14,9 @@ import kotlinx.coroutines.launch
 class MainPageViewModel(
     private val getUserListUseCase: GetUserListUseCase
 ) : BaseViewModel() {
-    val isError = MutableLiveData(false)
-    val userListResponse = MutableLiveData<UserSearchListModel>()
+    var isError = MutableLiveData(false)
+    var cvUserSearchVisibility = MutableLiveData(false)
+    var userListResponse = MutableLiveData<UserSearchListModel>()
 
     fun getUserList() {
         launch {

@@ -13,7 +13,6 @@
         android:paddingTop="@dimen/_20sdp"
         android:paddingStart="@dimen/_20sdp"
         android:paddingEnd="@dimen/_20sdp"
-        android:paddingBottom="@dimen/_13sdp"
         tools:ignore="RtlSymmetry">
 
         <ImageView
@@ -64,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_13sdp"
             android:textColor="@color/neutral_700"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintStart_toStartOf="@+id/tvUserJobPosition"
@@ -76,11 +76,21 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/_10sdp"
             android:paddingStart="@dimen/_13sdp"
+            android:paddingBottom="@dimen/_13sdp"
             android:textColor="@color/neutral_700"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintStart_toEndOf="@+id/tvUserLocation"
             app:layout_constraintTop_toBottomOf="@+id/tvUserJobPosition"
             tools:text="wangshi@mihoyo.com" />
+
+        <View
+            android:id="@+id/seperator"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/neutral_50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

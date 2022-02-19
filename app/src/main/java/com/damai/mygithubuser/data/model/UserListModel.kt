@@ -7,7 +7,31 @@ import com.google.gson.annotations.SerializedName
  *
  * This model is for storing the response data from API.
  */
-data class UserListModel(
-    @SerializedName("")
-    var id: Int
-)
+class UserListModel {
+    @SerializedName("id")
+    var id: Int = 0
+
+    @SerializedName("name")
+    var name: String? = null
+
+    @SerializedName("location")
+    var location: String? = null
+
+    @SerializedName("email")
+    var email: String? = null
+
+    @SerializedName("twitter_username")
+    var twitterUsername: String? = null
+
+    @SerializedName("company")
+    var company: String? = null
+
+    @SerializedName("followers")
+    var followers: Int = 0
+
+    @SerializedName("following")
+    var following: Int = 0
+
+    @SerializedName("url")
+    var url: String? = null
+}

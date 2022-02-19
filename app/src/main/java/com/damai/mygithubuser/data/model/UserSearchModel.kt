@@ -9,5 +9,6 @@ data class UserSearchModel(
     val nickname: String?,
     val jobPosition: String?,
     val location: String?,
-    val email: String?
+    val email: String?,
+    var url: String?
 )
