@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.damai.mygithubuser.core.customview.DefaultCircleTransform
 import com.damai.mygithubuser.data.model.UserSearchModel
 import com.damai.mygithubuser.databinding.ItemLayoutUserSearchBinding
+import com.squareup.picasso.Picasso
 
 /**
  * Created by damai.subimawanto on 2/18/2022.
@@ -66,6 +68,10 @@ class UserSearchAdapter : ListAdapter<UserSearchModel, UserSearchAdapter.UserSea
                 } else {
                     View.VISIBLE
                 }
+
+                Picasso.get().load(data.thumbnail).fit().centerCrop()
+                    .transform(DefaultCircleTransform())
+                    .into(ivUserThumbnail)
             }
         }
     }

@@ -32,6 +32,9 @@ class UserListModel {
     @SerializedName("following")
     var following: Int = 0
 
+    @SerializedName("avatar_url")
+    var avatarUrl: String? = null
+
     @SerializedName("url")
     var url: String? = null
 }

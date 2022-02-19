@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.damai.mygithubuser.R
 import com.damai.mygithubuser.core.BaseActivity
 import com.damai.mygithubuser.core.ViewDataBindingOwner
+import com.damai.mygithubuser.core.showToast
 import com.damai.mygithubuser.databinding.ActivityMainBinding
 import com.damai.mygithubuser.presentation.adapter.UserSearchAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,7 +43,10 @@ class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<Act
     private fun observeUserListError() {
         observeData(viewModel.isError) { result ->
             result?.let {
-
+                when (it) {
+                    true -> showToast(getString(R.string.error_text_api_hit))
+                    else -> {}
+                }
             }
         }
     }
