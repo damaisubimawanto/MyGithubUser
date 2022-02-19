@@ -71,6 +71,8 @@ class MainPageViewModel(
                                         it.jobPosition = dataModel.jobPosition
                                         it.location = dataModel.location
                                         it.email = dataModel.email
+                                        it.followers = dataModel.followers
+                                        it.following = dataModel.following
                                         it.isDataFetched = true
 
                                         userListResponse.value = UserSearchListModel(

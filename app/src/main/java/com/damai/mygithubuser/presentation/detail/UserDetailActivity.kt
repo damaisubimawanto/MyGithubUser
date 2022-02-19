@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.damai.mygithubuser.R
 import com.damai.mygithubuser.core.BaseActivity
 import com.damai.mygithubuser.core.ViewDataBindingOwner
+import com.damai.mygithubuser.core.showToast
 import com.damai.mygithubuser.data.model.UserSearchModel
 import com.damai.mygithubuser.databinding.ActivityUserDetailBinding
 import com.damai.mygithubuser.presentation.detail.adapter.UserDetailsAdapter
@@ -43,6 +44,7 @@ class UserDetailActivity : BaseActivity<UserDetailViewModel>(), UserDetailView,
 
         setupRvUserDetailsAdapter()
         observeUserDetailListData()
+        observeRepoListError()
 
         headerData?.let {
             val list = mutableListOf<Any>()
@@ -66,6 +68,15 @@ class UserDetailActivity : BaseActivity<UserDetailViewModel>(), UserDetailView,
                 if (!it.isNullOrEmpty()) {
                     userDetailsAdapter.submitList(it)
                 }
+            }
+        }
+    }
+
+    private fun observeRepoListError() {
+        observeData(viewModel.isError) { result ->
+            when (result) {
+                true -> showToast(getString(R.string.error_text_api_hit))
+                else -> {}
             }
         }
     }

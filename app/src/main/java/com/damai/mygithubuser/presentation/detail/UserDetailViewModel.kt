@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 class UserDetailViewModel(
     private val userRepoListUseCase: GetUserRepoListUseCase
 ) : BaseViewModel() {
+    var isError = MutableLiveData(false)
     var infoAndRepoListResponse = MutableLiveData<List<Any>>()
 
     fun getRepoList(username: String) {
@@ -34,7 +35,7 @@ class UserDetailViewModel(
                         }
                     }
                     is Resource.Error -> {
-
+                        isError.value = true
                     }
                     else -> {}
                 }

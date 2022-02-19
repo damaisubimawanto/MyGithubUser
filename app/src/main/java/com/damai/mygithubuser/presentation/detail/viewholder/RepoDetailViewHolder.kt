@@ -2,6 +2,7 @@ package com.damai.mygithubuser.presentation.detail.viewholder
 
 import com.damai.mygithubuser.core.PicassoController
 import com.damai.mygithubuser.data.model.RepoDetailModel
+import com.damai.mygithubuser.data.util.DisplayHelper
 import com.damai.mygithubuser.databinding.ItemLayoutDataUserRepoBinding
 
 /**
@@ -12,11 +13,15 @@ class RepoDetailViewHolder(
 ) : UserDetailsViewHolder<RepoDetailModel>(binding = binding) {
 
     override fun bindData(data: RepoDetailModel) {
+        val updatedTimeText = DisplayHelper(itemView.context).generateRepoLastUpdated(
+            time = data.lastUpdated
+        )
+
         binding.apply {
             tvRepoName.text = data.name
             tvRepoDescription.text = data.description
             tvRepoStarNumber.text = "${data.stars}"
-            tvRepoUpdatedTime.text = data.lastUpdated
+            tvRepoUpdatedTime.text = updatedTimeText
 
             PicassoController.loadImageCircle(
                 url = data.thumbnail,

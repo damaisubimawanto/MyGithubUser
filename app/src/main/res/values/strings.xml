@@ -5,7 +5,8 @@
     <string name="text_empty_job_position">::Currently Empty::</string>
     <string name="text_empty_location">::Unknown::</string>
     <string name="text_user_search_hint">Type for search the user …</string>
-    <string name="text_user_followers_number">%d Followers</string>
-    <string name="text_user_following_number">%d Following</string>
+    <string name="text_user_followers">Followers</string>
+    <string name="text_user_following">Following</string>
+    <string name="text_updated">Updated</string>
     <string name="error_text_api_hit">Error on getting data from server</string>
 </resources>

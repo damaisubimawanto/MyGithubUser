@@ -15,8 +15,8 @@ data class UserSearchModel(
     var location: String?,
     var email: String?,
     var thumbnail: String?,
-    val followers: Int,
-    val following: Int,
+    var followers: Int,
+    var following: Int,
     var url: String?,
 
     // For adapter
