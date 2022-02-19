@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.damai.mygithubuser.core.customview.DefaultCircleTransform
+import com.damai.mygithubuser.core.PicassoController
 import com.damai.mygithubuser.data.model.UserSearchModel
 import com.damai.mygithubuser.databinding.ItemLayoutUserSearchBinding
-import com.squareup.picasso.Picasso
 
 /**
  * Created by damai.subimawanto on 2/18/2022.
@@ -72,9 +71,10 @@ class UserSearchAdapter(
                     View.VISIBLE
                 }
 
-                Picasso.get().load(data.thumbnail).fit().centerCrop()
-                    .transform(DefaultCircleTransform())
-                    .into(ivUserThumbnail)
+                PicassoController.loadImageCircle(
+                    url = data.thumbnail,
+                    imageView = ivUserThumbnail
+                )
             }
 
             when (data.isDataFetched) {
@@ -94,10 +94,15 @@ class UserSearchAdapter(
                 }
                 else -> {}
             }
+
+            itemView.setOnClickListener {
+                mCallback.onItemClicked(data = data)
+            }
         }
     }
 
     interface Callback {
         fun needFetchData(id: Int, username: String)
+        fun onItemClicked(data: UserSearchModel)
     }
 }

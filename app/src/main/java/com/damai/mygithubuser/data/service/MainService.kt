@@ -1,5 +1,6 @@
 package com.damai.mygithubuser.data.service
 
+import com.damai.mygithubuser.data.model.RepoListModel
 import com.damai.mygithubuser.data.model.UserListModel
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,4 +16,9 @@ interface MainService {
     suspend fun getUserInfo(
         @Path("username") username: String
     ): UserListModel
+
+    @GET("/users/{username}/repos")
+    suspend fun getUserRepoList(
+        @Path("username") username: String
+    ): List<RepoListModel>
 }

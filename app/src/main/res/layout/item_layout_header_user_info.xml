@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_20sdp"
+        android:paddingStart="@dimen/_20sdp"
+        android:paddingEnd="@dimen/_20sdp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/ivUserThumbnail"
+            android:layout_width="@dimen/_53sdp"
+            android:layout_height="@dimen/_53sdp"
+            android:contentDescription="@string/content_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Space
+            android:id="@+id/spaceThumbnailEnd"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivUserThumbnail"
+            app:layout_constraintTop_toTopOf="@+id/ivUserThumbnail" />
+
+        <TextView
+            android:id="@+id/tvUserDisplayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_17ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/spaceThumbnailEnd"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Wang Guan" />
+
+        <TextView
+            android:id="@+id/tvUserNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_3sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toEndOf="@+id/spaceThumbnailEnd"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserDisplayName"
+            tools:text="\@wangguan" />
+
+        <TextView
+            android:id="@+id/tvUserJobPosition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spaceThumbnailEnd"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserNickname"
+            tools:text="Director of Mihoyo Company, Director of Mobile" />
+
+        <ImageView
+            android:id="@+id/ivFollowersIcon"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:contentDescription="@string/content_description"
+            app:layout_constraintStart_toEndOf="@+id/spaceThumbnailEnd"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserJobPosition"
+            app:srcCompat="@drawable/ic_followers" />
+
+        <ImageView
+            android:id="@+id/ivLocationIcon"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:contentDescription="@string/content_description"
+            app:layout_constraintStart_toEndOf="@+id/spaceThumbnailEnd"
+            app:layout_constraintTop_toBottomOf="@+id/ivFollowersIcon"
+            app:srcCompat="@drawable/ic_location_place" />
+
+        <ImageView
+            android:id="@+id/ivEmailIcon"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:contentDescription="@string/content_description"
+            app:layout_constraintStart_toEndOf="@+id/spaceThumbnailEnd"
+            app:layout_constraintTop_toBottomOf="@+id/ivLocationIcon"
+            app:srcCompat="@drawable/ic_email" />
+
+        <TextView
+            android:id="@+id/tvFollowersNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_7sdp"
+            android:paddingEnd="@dimen/_7sdp"
+            android:textColor="@color/neutral_900"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivFollowersIcon"
+            app:layout_constraintStart_toEndOf="@+id/ivFollowersIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivFollowersIcon"
+            tools:text="12K Followers" />
+
+        <TextView
+            android:id="@+id/tvFollowingNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_7sdp"
+            android:textColor="@color/neutral_900"
+            android:textSize="@dimen/_12ssp"
+            app:drawableStartCompat="@drawable/bullet"
+            app:layout_constraintBottom_toBottomOf="@+id/ivFollowersIcon"
+            app:layout_constraintStart_toEndOf="@+id/tvFollowersNumber"
+            app:layout_constraintTop_toTopOf="@+id/ivFollowersIcon"
+            tools:text="120 Following" />
+
+        <TextView
+            android:id="@+id/tvUserLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_7sdp"
+            android:textColor="@color/neutral_900"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivLocationIcon"
+            app:layout_constraintStart_toEndOf="@+id/ivLocationIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivLocationIcon"
+            tools:text="Taipei, Taiwan" />
+
+        <TextView
+            android:id="@+id/tvUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_7sdp"
+            android:textColor="@color/neutral_900"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivEmailIcon"
+            app:layout_constraintStart_toEndOf="@+id/ivEmailIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivEmailIcon"
+            tools:text="wangshi@mihoyo.com" />
+
+        <View
+            android:id="@+id/seperator"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:background="@color/neutral_50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserEmail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

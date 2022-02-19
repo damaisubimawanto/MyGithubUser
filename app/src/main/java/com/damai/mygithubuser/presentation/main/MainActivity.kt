@@ -1,18 +1,23 @@
 package com.damai.mygithubuser.presentation.main
 
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.damai.mygithubuser.R
 import com.damai.mygithubuser.core.BaseActivity
 import com.damai.mygithubuser.core.ViewDataBindingOwner
 import com.damai.mygithubuser.core.showToast
+import com.damai.mygithubuser.data.model.UserSearchModel
 import com.damai.mygithubuser.databinding.ActivityMainBinding
+import com.damai.mygithubuser.presentation.detail.UserDetailActivity
 import com.damai.mygithubuser.presentation.main.adapter.UserSearchAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<ActivityMainBinding>,
     MainPageView, UserSearchAdapter.Callback {
     private lateinit var userSearchAdapter: UserSearchAdapter
+
+    private val openNewActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}
 
     override var originalBinding: ActivityMainBinding? = null
     override val layoutResourceId: Int = R.layout.activity_main
@@ -38,12 +43,20 @@ class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<Act
         )
     }
 
+    /**
+     * Callback from UserSearchAdapter.Callback.
+     */
+    override fun onItemClicked(data: UserSearchModel) {
+        openNewActivity.launch(UserDetailActivity.generateIntentForResult(
+            context = this,
+            data = data
+        ))
+    }
+
     private fun observeUserListData() {
         observeData(viewModel.userListResponse) { result ->
             result?.let {
-                if (it.dataList.isNullOrEmpty()) {
-
-                } else {
+                if (!it.dataList.isNullOrEmpty()) {
                     viewModel.cvUserSearchVisibility.value = true
                     userSearchAdapter.submitList(it.dataList)
                 }
@@ -53,11 +66,9 @@ class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<Act
 
     private fun observeUserListError() {
         observeData(viewModel.isError) { result ->
-            result?.let {
-                when (it) {
-                    true -> showToast(getString(R.string.error_text_api_hit))
-                    else -> {}
-                }
+            when (result) {
+                true -> showToast(getString(R.string.error_text_api_hit))
+                else -> {}
             }
         }
     }

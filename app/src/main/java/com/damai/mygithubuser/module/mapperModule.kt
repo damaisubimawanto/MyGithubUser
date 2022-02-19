@@ -1,5 +1,6 @@
 package com.damai.mygithubuser.module
 
+import com.damai.mygithubuser.data.mapper.RepoListModelToRepoSearchListModelMapper
 import com.damai.mygithubuser.data.mapper.UserListInfoModelToUserSearchModelMapper
 import com.damai.mygithubuser.data.mapper.UserSearchListToUserSearchModelMapper
 import org.koin.dsl.module
@@ -12,4 +13,5 @@ val mapperModule = module {
     factory { UserListInfoModelToUserSearchModelMapper(
         displayHelper = get()
     ) }
+    factory { RepoListModelToRepoSearchListModelMapper() }
 }

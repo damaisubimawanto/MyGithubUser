@@ -1,5 +1,6 @@
 package com.damai.mygithubuser.module
 
+import com.damai.mygithubuser.presentation.detail.UserDetailViewModel
 import com.damai.mygithubuser.presentation.main.MainPageViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -9,4 +10,5 @@ import org.koin.dsl.module
  */
 val viewModelModule = module {
     viewModel { MainPageViewModel(get(), get()) }
+    viewModel { UserDetailViewModel(get()) }
 }

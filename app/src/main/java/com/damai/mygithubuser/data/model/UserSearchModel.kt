@@ -1,8 +1,12 @@
 package com.damai.mygithubuser.data.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * Created by damai.subimawanto on 2/18/2022.
  */
+@Parcelize
 data class UserSearchModel(
     val id: Int,
     var displayName: String?,
@@ -11,8 +15,10 @@ data class UserSearchModel(
     var location: String?,
     var email: String?,
     var thumbnail: String?,
+    val followers: Int,
+    val following: Int,
     var url: String?,
 
     // For adapter
     var isDataFetched: Boolean? = null
-)
+): Parcelable

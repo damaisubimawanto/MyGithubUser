@@ -20,6 +20,8 @@ class UserSearchListToUserSearchModelMapper : BaseMapper<List<UserListModel>, Us
                     location = it.location,
                     email = it.email,
                     thumbnail = it.avatarUrl,
+                    followers = it.followers,
+                    following = it.following,
                     url = it.url
                 )
             }

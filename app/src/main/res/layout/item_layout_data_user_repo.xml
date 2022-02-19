@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_13sdp"
+        android:paddingStart="@dimen/_20sdp"
+        android:paddingEnd="@dimen/_20sdp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/ivUserThumbnail"
+            android:layout_width="@dimen/_27sdp"
+            android:layout_height="@dimen/_27sdp"
+            android:contentDescription="@string/content_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Space
+            android:id="@+id/spaceThumbnailEnd"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivUserThumbnail"
+            app:layout_constraintTop_toTopOf="@+id/ivUserThumbnail" />
+
+        <TextView
+            android:id="@+id/tvRepoName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spaceThumbnailEnd"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="android-trinity" />
+
+        <TextView
+            android:id="@+id/tvRepoDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_7sdp"
+            android:textColor="@color/neutral_700"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spaceThumbnailEnd"
+            app:layout_constraintTop_toBottomOf="@+id/tvRepoName"
+            tools:text="android-trinity is tiny proactive framework with mush of the scaffolding code required to start a new Android Application." />
+
+        <ImageView
+            android:id="@+id/ivStarRepoIcon"
+            android:layout_width="@dimen/_13sdp"
+            android:layout_height="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:contentDescription="@string/content_description"
+            app:layout_constraintStart_toEndOf="@+id/spaceThumbnailEnd"
+            app:layout_constraintTop_toBottomOf="@+id/tvRepoDescription"
+            app:srcCompat="@drawable/ic_star_repo" />
+
+        <TextView
+            android:id="@+id/tvRepoStarNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_3sdp"
+            android:textColor="@color/neutral_700"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivStarRepoIcon"
+            app:layout_constraintStart_toEndOf="@+id/ivStarRepoIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivStarRepoIcon"
+            tools:text="55" />
+
+        <TextView
+            android:id="@+id/tvRepoUpdatedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_13sdp"
+            android:textColor="@color/neutral_700"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivStarRepoIcon"
+            app:layout_constraintStart_toEndOf="@+id/tvRepoStarNumber"
+            app:layout_constraintTop_toTopOf="@+id/ivStarRepoIcon"
+            tools:text="Updated 15 hours ago" />
+
+        <View
+            android:id="@+id/seperator"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:background="@color/neutral_50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivStarRepoIcon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

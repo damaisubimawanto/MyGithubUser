@@ -19,6 +19,8 @@ class UserListInfoModelToUserSearchModelMapper(
             jobPosition = displayHelper.generateJobPosition(value.company),
             location = displayHelper.generateLocation(value.location),
             email = displayHelper.generateEmail(value.email),
+            followers = 0,
+            following = 0,
             thumbnail = value.avatarUrl,
             url = value.url
         )
