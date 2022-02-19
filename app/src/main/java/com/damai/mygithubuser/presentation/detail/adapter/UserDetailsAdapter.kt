@@ -28,9 +28,9 @@ class UserDetailsAdapter : ListAdapter<Any, UserDetailsViewHolder<Any>>(
                 newItem: Any
             ): Boolean {
                 when (oldItem) {
-                    is UserDetailsModel -> {
+                    is UserSearchModel -> {
                         when (newItem) {
-                            is UserDetailsModel -> {
+                            is RepoDetailModel -> {
                                 return oldItem.id == newItem.id
                             }
                         }
@@ -44,9 +44,9 @@ class UserDetailsAdapter : ListAdapter<Any, UserDetailsViewHolder<Any>>(
                 newItem: Any
             ): Boolean {
                 when (oldItem) {
-                    is UserDetailsModel -> {
+                    is UserSearchModel -> {
                         when (newItem) {
-                            is UserDetailsModel -> {
+                            is RepoDetailModel -> {
                                 return oldItem.id == newItem.id
                             }
                         }
