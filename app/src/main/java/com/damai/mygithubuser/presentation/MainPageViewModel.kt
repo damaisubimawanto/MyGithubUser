@@ -71,6 +71,7 @@ class MainPageViewModel(
                                         it.jobPosition = dataModel.jobPosition
                                         it.location = dataModel.location
                                         it.email = dataModel.email
+                                        it.isDataFetched = true
 
                                         userListResponse.value = UserSearchListModel(
                                             dataList = tempData.toList()

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MyGithubUser</string>
     <string name="content_description">Image content description</string>
+    <string name="text_empty_name">::Unknown::</string>
+    <string name="text_empty_job_position">::Currently Empty::</string>
+    <string name="text_empty_location">::Unknown::</string>
     <string name="text_user_search_hint">Type for search the user …</string>
     <string name="error_text_api_hit">Error on getting data from server</string>
 </resources>

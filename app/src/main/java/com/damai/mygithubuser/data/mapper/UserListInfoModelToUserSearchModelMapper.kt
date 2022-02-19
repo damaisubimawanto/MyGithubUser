@@ -3,19 +3,22 @@ package com.damai.mygithubuser.data.mapper
 import com.damai.mygithubuser.core.BaseMapper
 import com.damai.mygithubuser.data.model.UserListModel
 import com.damai.mygithubuser.data.model.UserSearchModel
+import com.damai.mygithubuser.data.util.DisplayHelper
 
 /**
  * Created by damai.subimawanto on 2/19/2022.
  */
-class UserListInfoModelToUserSearchModelMapper : BaseMapper<UserListModel, UserSearchModel>() {
+class UserListInfoModelToUserSearchModelMapper(
+    private val displayHelper: DisplayHelper
+) : BaseMapper<UserListModel, UserSearchModel>() {
     override fun map(value: UserListModel): UserSearchModel {
         return UserSearchModel(
             id = value.id,
-            displayName = value.name,
-            nickname = value.twitterUsername,
-            jobPosition = value.company,
-            location = value.location,
-            email = value.email,
+            displayName = displayHelper.generateDisplayName(value.name),
+            nickname = displayHelper.generateNickname(value.twitterUsername),
+            jobPosition = displayHelper.generateJobPosition(value.company),
+            location = displayHelper.generateLocation(value.location),
+            email = displayHelper.generateEmail(value.email),
             thumbnail = value.avatarUrl,
             url = value.url
         )
