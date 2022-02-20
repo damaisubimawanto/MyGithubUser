@@ -29,7 +29,7 @@ The main page consists of an EditText box and a RecyclerView for the user search
   4.  Room
 
           A local storage powered by Google and based on SQLite, it is used for offline data when there is no internet connection or error on getting data from API.
-  5.  Kotlin Couroutines
+  5.  Kotlin Coroutines
 
           A feature from Kotlin to execute commands in asynchronous.
   6.  Kotlin Flow
