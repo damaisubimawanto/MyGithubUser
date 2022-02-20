@@ -1,5 +1,6 @@
 package com.damai.mygithubuser.domain
 
+import com.damai.mygithubuser.core.DataSource
 import com.damai.mygithubuser.core.FlowUseCase
 import com.damai.mygithubuser.core.Resource
 import com.damai.mygithubuser.data.model.UserSearchListModel
@@ -11,9 +12,9 @@ import kotlinx.coroutines.flow.Flow
  */
 class GetUserListUseCase(
     private val repo: UserSearchRepository
-) : FlowUseCase<Nothing?, UserSearchListModel>() {
+) : FlowUseCase<DataSource, UserSearchListModel>() {
 
-    override suspend fun execute(parameters: Nothing?): Flow<Resource<UserSearchListModel>> {
-        return repo.getUserList()
+    override suspend fun execute(parameters: DataSource?): Flow<Resource<UserSearchListModel>> {
+        return repo.getUserList(parameters!!)
     }
 }
