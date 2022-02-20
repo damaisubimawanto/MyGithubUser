@@ -13,8 +13,8 @@ class UserRepoListLocalSourceImpl(
     private val repoDetailToEntityMapper: RepoDetailListToRepoDetailEntityListMapper
 ) : UserRepoListLocalSource {
 
-    override suspend fun getUserRepoList(): List<RepoDetailModel> {
-        return repoDetailToModelMapper.map(userSearchDao.getRepoDetailList())
+    override suspend fun getUserRepoList(userId: Int): List<RepoDetailModel> {
+        return repoDetailToModelMapper.map(userSearchDao.getRepoDetailList(userId = userId))
     }
 
     override suspend fun saveUserRepoList(list: List<RepoDetailModel>) {

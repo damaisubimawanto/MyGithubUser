@@ -16,6 +16,7 @@ class RepoListModelToRepoSearchListModelMapper : BaseMapper<List<RepoListModel>,
                     id = it.id,
                     name = it.name,
                     description = it.description,
+                    userId = it.owner?.id ?: 0,
                     thumbnail = it.owner?.avatarUrl,
                     stars = it.stargazersCount,
                     lastUpdated = it.updatedAt

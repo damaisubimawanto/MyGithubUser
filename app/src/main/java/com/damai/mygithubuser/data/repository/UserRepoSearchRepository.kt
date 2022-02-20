@@ -2,6 +2,7 @@ package com.damai.mygithubuser.data.repository
 
 import com.damai.mygithubuser.core.Resource
 import com.damai.mygithubuser.data.model.RepoSearchListModel
+import com.damai.mygithubuser.data.model.RequestUserInfoModel
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -10,5 +11,5 @@ import kotlinx.coroutines.flow.Flow
 interface UserRepoSearchRepository {
 
     @Throws(Exception::class)
-    fun getUserRepoList(username: String): Flow<Resource<RepoSearchListModel>>
+    fun getUserRepoList(requestModel: RequestUserInfoModel): Flow<Resource<RepoSearchListModel>>
 }

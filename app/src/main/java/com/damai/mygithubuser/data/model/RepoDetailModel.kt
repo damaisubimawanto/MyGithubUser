@@ -7,6 +7,7 @@ data class RepoDetailModel(
     val id: Int,
     val name: String?,
     val description: String?,
+    val userId: Int,
     val thumbnail: String?,
     val stars: Int,
     val lastUpdated: String?

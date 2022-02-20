@@ -13,6 +13,7 @@ data class RepoDetailEntity(
     @ColumnInfo(name = "last_updated") val lastUpdated: String?,
     val name: String?,
     val description: String?,
+    val userId: Int,
     val thumbnail: String?,
     val stars: Int
 )

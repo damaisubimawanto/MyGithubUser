@@ -3,6 +3,7 @@ package com.damai.mygithubuser.presentation.detail
 import androidx.lifecycle.MutableLiveData
 import com.damai.mygithubuser.core.BaseViewModel
 import com.damai.mygithubuser.core.Resource
+import com.damai.mygithubuser.data.model.RequestUserInfoModel
 import com.damai.mygithubuser.domain.GetUserRepoListUseCase
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -16,9 +17,16 @@ class UserDetailViewModel(
     var isError = MutableLiveData(false)
     var infoAndRepoListResponse = MutableLiveData<List<Any>>()
 
-    fun getRepoList(username: String) {
+    fun getRepoList(
+        userId: Int,
+        username: String
+    ) {
+        val requestModel = RequestUserInfoModel(
+            id = userId,
+            username = username
+        )
         launch {
-            userRepoListUseCase(username).collect {
+            userRepoListUseCase(requestModel).collect {
                 when (it) {
                     is Resource.Success -> {
                         it.model?.let { dataModel ->

@@ -15,8 +15,8 @@ interface UserSearchDao {
     @Query("SELECT * FROM user_search_entity WHERE id = :userId")
     fun getUserSearch(userId: Int): UserSearchEntity
 
-    @Query("SELECT * FROM repo_detail_entity")
-    fun getRepoDetailList(): List<RepoDetailEntity>
+    @Query("SELECT * FROM repo_detail_entity WHERE userId = :userId")
+    fun getRepoDetailList(userId: Int): List<RepoDetailEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllUserSearch(userSearchList: List<UserSearchEntity>)

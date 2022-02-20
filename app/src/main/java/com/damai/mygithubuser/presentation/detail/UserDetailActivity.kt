@@ -57,7 +57,10 @@ class UserDetailActivity : BaseActivity<UserDetailViewModel>(), UserDetailView,
                 null
             }
             urlUri?.lastPathSegment?.let { username ->
-                viewModel.getRepoList(username = username)
+                viewModel.getRepoList(
+                    userId = it.id,
+                    username = username
+                )
             }
         }
     }

@@ -14,6 +14,7 @@ class RepoDetailListToRepoDetailEntityListMapper : BaseMapper<List<RepoDetailMod
                 id = it.id,
                 name = it.name,
                 description = it.description,
+                userId = it.userId,
                 thumbnail = it.thumbnail,
                 stars = it.stars,
                 lastUpdated = it.lastUpdated

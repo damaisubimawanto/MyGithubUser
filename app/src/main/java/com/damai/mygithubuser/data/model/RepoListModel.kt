@@ -27,6 +27,9 @@ class RepoListModel {
     var owner: RepoOwnerModel? = null
 
     class RepoOwnerModel {
+        @SerializedName("id")
+        var id: Int = 0
+
         @SerializedName("avatar_url")
         var avatarUrl: String? = null
     }
