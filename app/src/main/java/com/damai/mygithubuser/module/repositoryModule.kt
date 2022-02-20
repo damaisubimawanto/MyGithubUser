@@ -23,6 +23,7 @@ val repositoryModule = module {
     single<UserRepoSearchRepository> {
         UserRepoSearchRepositoryImpl(
             mainService = get(),
+            userRepoListLocalSource = get(),
             repoListMapper = get(),
             schedulerProvider = get()
         )

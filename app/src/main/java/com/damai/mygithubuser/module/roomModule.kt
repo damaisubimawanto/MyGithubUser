@@ -1,8 +1,6 @@
 package com.damai.mygithubuser.module
 
-import com.damai.mygithubuser.data.room.AppDatabase
-import com.damai.mygithubuser.data.room.UserSearchListLocalSource
-import com.damai.mygithubuser.data.room.UserSearchListLocalSourceImpl
+import com.damai.mygithubuser.data.room.*
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -20,6 +18,13 @@ val roomModule = module {
             userSearchToEntityListMapper = get(),
             userSearchToModelMapper = get(),
             userSearchToEntityMapper = get()
+        )
+    }
+    factory<UserRepoListLocalSource> {
+        UserRepoListLocalSourceImpl(
+            userSearchDao = get(),
+            repoDetailToModelMapper = get(),
+            repoDetailToEntityMapper = get()
         )
     }
 }

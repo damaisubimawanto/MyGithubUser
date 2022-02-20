@@ -16,4 +16,7 @@ val mapperModule = module {
     factory { UserSearchModelListToUserSearchEntityListMapper() }
     factory { UserSearchEntityToUserSearchModelMapper() }
     factory { UserSearchModelToUserSearchEntityMapper() }
+
+    factory { RepoDetailEntityListToRepoDetailListMapper() }
+    factory { RepoDetailListToRepoDetailEntityListMapper() }
 }
