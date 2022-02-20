@@ -12,6 +12,9 @@ interface UserSearchDao {
     @Query("SELECT * FROM user_search_entity")
     fun getUserSearchList(): List<UserSearchEntity>
 
+    @Query("SELECT * FROM user_search_entity WHERE id = :userId")
+    fun getUserSearch(userId: Int): UserSearchEntity
+
     @Query("SELECT * FROM repo_detail_entity")
     fun getRepoDetailList(): List<RepoDetailEntity>
 

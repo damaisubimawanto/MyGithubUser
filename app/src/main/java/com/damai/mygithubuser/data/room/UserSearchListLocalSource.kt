@@ -7,6 +7,7 @@ import com.damai.mygithubuser.data.model.UserSearchModel
  */
 interface UserSearchListLocalSource {
     suspend fun getUserSearchList(): List<UserSearchModel>
+    suspend fun getUserSearch(id: Int): UserSearchModel
     suspend fun saveUserSearchList(list: List<UserSearchModel>)
     suspend fun saveUserSearch(data: UserSearchModel)
 }

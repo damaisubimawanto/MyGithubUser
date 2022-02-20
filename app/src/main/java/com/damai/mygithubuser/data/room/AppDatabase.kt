@@ -1,5 +1,6 @@
 package com.damai.mygithubuser.data.room
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -20,12 +21,14 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userSearchDao(): UserSearchDao
 
     companion object {
-        fun buildDatabase(context: Context): AppDatabase {
+        fun buildDatabase(application: Application): AppDatabase {
             return Room.databaseBuilder(
-                context.applicationContext,
+                application,
                 AppDatabase::class.java,
-                "appdatabase.db"
-            ).build()
+                "appdatabase"
+            )
+                .fallbackToDestructiveMigration()
+                .build()
         }
     }
 }

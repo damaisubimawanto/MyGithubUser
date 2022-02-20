@@ -62,8 +62,8 @@ class UserSearchRepositoryImpl(
                 userSearchListLocalSource.saveUserSearch(data = data)
             }
 
-            override suspend fun localFetch(): UserSearchModel? {
-                return null
+            override suspend fun localFetch(): UserSearchModel {
+                return userSearchListLocalSource.getUserSearch(id = request.id)
             }
 
             override fun shouldFetchRemoteAndSaveLocal(): Boolean {
