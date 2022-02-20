@@ -1,6 +1,7 @@
 package com.damai.mygithubuser.presentation.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.damai.mygithubuser.R
@@ -29,6 +30,7 @@ class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<Act
         observeUserListData()
         observeUserListError()
         observeNotifyIndex()
+        observeLoadingCounter()
 
         viewModel.getUserList()
     }
@@ -78,6 +80,18 @@ class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<Act
             result?.let {
                 if (it > -1) {
                     userSearchAdapter.notifyItemChanged(it)
+                }
+            }
+        }
+    }
+
+    private fun observeLoadingCounter() {
+        observeData(viewModel.loadingCounter) { result ->
+            result?.let {
+                binding.cvLoading.visibility = if (it > 0) {
+                    View.VISIBLE
+                } else {
+                    View.GONE
                 }
             }
         }

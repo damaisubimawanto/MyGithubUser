@@ -21,6 +21,7 @@ class MainPageViewModel(
 ) : BaseViewModel() {
     private val syncData = SyncData()
     var notifyItemIndex = MutableLiveData(-1)
+    var loadingCounter = MutableLiveData(0)
     var isError = MutableLiveData(false)
     var cvUserSearchVisibility = MutableLiveData(false)
     var userListResponse = MutableLiveData<UserSearchListModel>()
@@ -60,6 +61,7 @@ class MainPageViewModel(
             id = id,
             username = username
         )
+        loadingCounter.value = (loadingCounter.value ?: 0) + 1
         launch {
             getUserListInfoUseCase(request).collect { result ->
                 when (result) {
@@ -85,6 +87,9 @@ class MainPageViewModel(
                                             dataList = tempData.toList()
                                         )
                                         notifyItemIndex.value = index
+                                        loadingCounter.value?.let { counter ->
+                                            loadingCounter.value = counter - 1
+                                        }
                                     }
                                 }
                             }
