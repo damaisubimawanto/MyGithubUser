@@ -28,7 +28,8 @@ class MyApplication : Application() {
                     mapperModule,
                     useCaseModule,
                     viewModelModule,
-                    helperModule
+                    helperModule,
+                    roomModule
                 )
             )
         }

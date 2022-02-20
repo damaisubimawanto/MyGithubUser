@@ -2,7 +2,9 @@ package com.damai.mygithubuser.presentation.main
 
 import androidx.lifecycle.MutableLiveData
 import com.damai.mygithubuser.core.BaseViewModel
+import com.damai.mygithubuser.core.DataSource
 import com.damai.mygithubuser.core.Resource
+import com.damai.mygithubuser.data.model.RequestUserInfoModel
 import com.damai.mygithubuser.data.model.SyncData
 import com.damai.mygithubuser.data.model.UserSearchListModel
 import com.damai.mygithubuser.domain.GetUserListUseCase
@@ -25,7 +27,7 @@ class MainPageViewModel(
 
     fun getUserList() {
         launch {
-            getUserListUseCase().collect {
+            getUserListUseCase(DataSource.REMOTE).collect {
                 when (it) {
                     is Resource.Success -> {
                         it.model?.let { dataModel ->
@@ -54,8 +56,12 @@ class MainPageViewModel(
         id: Int,
         username: String
     ) {
+        val request = RequestUserInfoModel(
+            id = id,
+            username = username
+        )
         launch {
-            getUserListInfoUseCase(username).collect { result ->
+            getUserListInfoUseCase(request).collect { result ->
                 when (result) {
                     is Resource.Success -> {
                         result.model?.let { dataModel ->

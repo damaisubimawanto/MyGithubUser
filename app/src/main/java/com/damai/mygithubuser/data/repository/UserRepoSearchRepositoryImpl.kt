@@ -5,6 +5,7 @@ import com.damai.mygithubuser.core.Resource
 import com.damai.mygithubuser.core.SchedulerProvider
 import com.damai.mygithubuser.data.mapper.RepoListModelToRepoSearchListModelMapper
 import com.damai.mygithubuser.data.model.RepoSearchListModel
+import com.damai.mygithubuser.data.room.UserRepoListLocalSource
 import com.damai.mygithubuser.data.service.MainService
 import kotlinx.coroutines.flow.Flow
 
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.Flow
  */
 class UserRepoSearchRepositoryImpl(
     private val mainService: MainService,
+    private val userRepoListLocalSource: UserRepoListLocalSource,
     private val repoListMapper: RepoListModelToRepoSearchListModelMapper,
     private val schedulerProvider: SchedulerProvider
 ) : UserRepoSearchRepository {
@@ -22,6 +24,24 @@ class UserRepoSearchRepositoryImpl(
             override suspend fun remoteFetch(): RepoSearchListModel {
                 val request = mainService.getUserRepoList(username = username)
                 return repoListMapper.map(request)
+            }
+
+            override suspend fun saveLocal(data: RepoSearchListModel) {
+                userRepoListLocalSource.saveUserRepoList(data.dataList)
+            }
+
+            override suspend fun localFetch(): RepoSearchListModel {
+                return RepoSearchListModel(
+                    dataList = userRepoListLocalSource.getUserRepoList()
+                )
+            }
+
+            override fun shouldFetchRemoteAndSaveLocal(): Boolean {
+                return true
+            }
+
+            override fun shouldFetchLocalOnError(): Boolean {
+                return true
             }
         }.asFlow()
     }

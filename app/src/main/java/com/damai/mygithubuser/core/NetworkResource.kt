@@ -30,9 +30,18 @@ abstract class NetworkResource<T>(private val schedulerProvider: SchedulerProvid
                         emit(Resource.Success(model = remoteResponse.value, DataSource.REMOTE))
                     }
                 }
-
                 is ResultWrapper.GenericError -> {
-                    emit(Resource.Error(errorData = ErrorData(remoteResponse.code, remoteResponse.message)))
+                    if (shouldFetchLocalOnError()) {
+                        val localData = withContext(schedulerProvider.io()) {
+                            localFetch()
+                        }
+                        emit(Resource.Success(model = localData, DataSource.CACHE))
+                    } else {
+                        emit(Resource.Error(errorData = ErrorData(
+                            remoteResponse.code,
+                            remoteResponse.message
+                        )))
+                    }
                 }
             }
         } else {
@@ -50,4 +59,5 @@ abstract class NetworkResource<T>(private val schedulerProvider: SchedulerProvid
     open fun onFetchFailed(throwable: Throwable) = Unit
     open fun shouldFetchFromRemote() = true
     open fun shouldFetchRemoteAndSaveLocal() = false
+    open fun shouldFetchLocalOnError() = false
 }
