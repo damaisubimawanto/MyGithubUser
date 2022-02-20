@@ -48,6 +48,10 @@ class UserSearchRepositoryImpl(
             override fun shouldFetchRemoteAndSaveLocal(): Boolean {
                 return true
             }
+
+            override fun shouldFetchLocalOnError(): Boolean {
+                return true
+            }
         }.asFlow()
     }
 
@@ -67,6 +71,10 @@ class UserSearchRepositoryImpl(
             }
 
             override fun shouldFetchRemoteAndSaveLocal(): Boolean {
+                return true
+            }
+
+            override fun shouldFetchLocalOnError(): Boolean {
                 return true
             }
         }.asFlow()
