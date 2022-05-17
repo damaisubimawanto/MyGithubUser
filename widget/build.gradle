@@ -1,8 +1,9 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
+group='com.github.damaisubimawanto'
 /*apply plugin: 'com.github.dcendents.android-maven'
-
 group='com.github.ittianyu'*/
 
 android {
