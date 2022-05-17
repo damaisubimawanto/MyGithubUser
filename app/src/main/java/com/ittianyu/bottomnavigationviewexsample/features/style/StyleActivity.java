@@ -1,14 +1,15 @@
 package com.ittianyu.bottomnavigationviewexsample.features.style;
 
-import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.ittianyu.bottomnavigationviewexsample.R;
 import com.ittianyu.bottomnavigationviewexsample.databinding.ActivityStyleBinding;
@@ -19,7 +20,6 @@ public class StyleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_style);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_style);
 
         init();
@@ -97,15 +97,12 @@ public class StyleActivity extends AppCompatActivity {
                 getResources().getColorStateList(R.color.selector_item_gray_color));
         bind.bnveCenterIconOnly.setIconMarginTop(centerPosition, BottomNavigationViewEx.dp2px(this, 4));
         // you could set a listener for bnve. and return false when click the center item so that it won't be checked.
-        bind.bnveCenterIconOnly.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.menu_add) {
-                    Toast.makeText(StyleActivity.this, "add", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-                return true;
+        bind.bnveCenterIconOnly.setOnNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.menu_add) {
+                Toast.makeText(StyleActivity.this, "add", Toast.LENGTH_SHORT).show();
+                return false;
             }
+            return true;
         });
     }
 

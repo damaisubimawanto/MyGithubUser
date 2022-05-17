@@ -1,10 +1,11 @@
 package com.ittianyu.bottomnavigationviewexsample.features.badgeview;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.ittianyu.bottomnavigationviewexsample.R;
 import com.ittianyu.bottomnavigationviewexsample.databinding.ActivityBadgeViewBinding;
@@ -18,7 +19,6 @@ public class BadgeViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_badge_view);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_badge_view);
 
         initView();
@@ -37,17 +37,18 @@ public class BadgeViewActivity extends AppCompatActivity {
 
     private Badge addBadgeAt(int position, int number) {
         // add badge
-        return new QBadgeView(this)
-                .setBadgeNumber(number)
-                .setGravityOffset(12, 2, true)
-                .bindTarget(bind.bnve.getBottomNavigationItemView(position))
-                .setOnDragStateChangedListener(new Badge.OnDragStateChangedListener() {
-                    @Override
-                    public void onDragStateChanged(int dragState, Badge badge, View targetView) {
+        View viewItem = bind.bnve.getBottomNavigationItemView(position);
+        if (viewItem != null) {
+            new QBadgeView(this)
+                    .setBadgeNumber(number)
+                    .setGravityOffset(12, 2, true)
+                    .bindTarget(viewItem)
+                    .setOnDragStateChangedListener((dragState, badge, targetView) -> {
                         if (Badge.OnDragStateChangedListener.STATE_SUCCEED == dragState)
                             Toast.makeText(BadgeViewActivity.this, R.string.tips_badge_removed, Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    });
+        }
+        return null;
     }
 
 }

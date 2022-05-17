@@ -1,15 +1,14 @@
 package com.ittianyu.bottomnavigationviewexsample.features.setupwithviewpager;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.ittianyu.bottomnavigationviewexsample.common.base.BaseFragment;
 import com.ittianyu.bottomnavigationviewexsample.R;
@@ -29,7 +28,6 @@ public class SetupWithViewPagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_with_view_pager);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_with_view_pager);
 
         initView();
@@ -87,13 +85,10 @@ public class SetupWithViewPagerActivity extends AppCompatActivity {
      */
     private void initEvent() {
         // set listener to do something then item selected
-        bind.bnve.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Log.d(TAG, item.getItemId() + " item was selected-------------------");
-                // you can return false to cancel select
-                return true;
-            }
+        bind.bnve.setOnNavigationItemSelectedListener(item -> {
+            Log.d(TAG, item.getItemId() + " item was selected-------------------");
+            // you can return false to cancel select
+            return true;
         });
 
     }
@@ -109,14 +104,15 @@ public class SetupWithViewPagerActivity extends AppCompatActivity {
             this.data = data;
         }
 
-        @Override
-        public int getCount() {
-            return data.size();
-        }
-
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             return data.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return data.size();
         }
     }
 

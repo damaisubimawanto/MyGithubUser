@@ -1,12 +1,13 @@
 package com.ittianyu.bottomnavigationviewexsample.common.base;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 
 import com.ittianyu.bottomnavigationviewexsample.R;
 import com.ittianyu.bottomnavigationviewexsample.databinding.FragBaseBinding;
@@ -31,7 +32,7 @@ public class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = View.inflate(getContext(), R.layout.frag_base, null);
         // bind view
-        binding = DataBindingUtil.bind(view);
+        binding = DataBindingUtil.inflate(inflater, R.layout.frag_base, container, false);
         binding.tvTitle.setText(title);
         return view;
     }
