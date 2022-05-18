@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.ittianyu.bottomnavigationviewexsample.R;
 import com.ittianyu.bottomnavigationviewexsample.databinding.ActivityStyleBinding;
@@ -97,7 +97,7 @@ public class StyleActivity extends AppCompatActivity {
                 getResources().getColorStateList(R.color.selector_item_gray_color));
         bind.bnveCenterIconOnly.setIconMarginTop(centerPosition, BottomNavigationViewEx.dp2px(this, 4));
         // you could set a listener for bnve. and return false when click the center item so that it won't be checked.
-        bind.bnveCenterIconOnly.setOnNavigationItemSelectedListener(item -> {
+        bind.bnveCenterIconOnly.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.menu_add) {
                 Toast.makeText(StyleActivity.this, "add", Toast.LENGTH_SHORT).show();
                 return false;
@@ -149,11 +149,15 @@ public class StyleActivity extends AppCompatActivity {
     private void initUncheckedFirstTime() {
         disableAllAnimation(bind.bnveUncheckedFirstTime);
         // use the unchecked color for first item
-        bind.bnveUncheckedFirstTime.setIconTintList(0, getResources()
-                .getColorStateList(R.color.colorGray));
-        bind.bnveUncheckedFirstTime.setTextTintList(0, getResources()
-                .getColorStateList(R.color.colorGray));
-        bind.bnveUncheckedFirstTime.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bind.bnveUncheckedFirstTime.setIconTintList(
+            0,
+            getResources().getColorStateList(R.color.colorGray)
+        );
+        bind.bnveUncheckedFirstTime.setTextTintList(
+            0,
+            getResources().getColorStateList(R.color.colorGray)
+        );
+        bind.bnveUncheckedFirstTime.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             private boolean firstClick = true;
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -162,10 +166,14 @@ public class StyleActivity extends AppCompatActivity {
                     int position = bind.bnveUncheckedFirstTime.getMenuItemPosition(item);
                     if (0 == position) {
                         firstClick = false;
-                        bind.bnveUncheckedFirstTime.setIconTintList(0, getResources()
-                                .getColorStateList(R.color.selector_item_primary_color));
-                        bind.bnveUncheckedFirstTime.setTextTintList(0, getResources()
-                                .getColorStateList(R.color.selector_item_primary_color));
+                        bind.bnveUncheckedFirstTime.setIconTintList(
+                            0,
+                            getResources().getColorStateList(R.color.selector_item_primary_color)
+                        );
+                        bind.bnveUncheckedFirstTime.setTextTintList(
+                            0,
+                            getResources().getColorStateList(R.color.selector_item_primary_color)
+                        );
                     }
                 }
                 // do other

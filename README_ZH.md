@@ -26,7 +26,7 @@
 |getLargeLabelAt|获取位于 position 的大标签. 每个子项包含两个标签，一个大的，一个小的。
 |getSmallLabelAt|获取位于 position 的小标签. 每个子项包含两个标签，一个大的，一个小的。
 |getMenuItemPosition|获取子菜单的索引。如果找不到，返回 -1。
-|getOnNavigationItemSelectedListener|获取 OnNavigationItemSelectedListener。
+|getOnItemSelectedListener|获取 OnItemSelectedListener。
 |setCurrentItem|设置当前选中项。
 |setIconMarginTop|设置 icon 的 MarginTop，用于调节图标垂直位置。
 |setIconSize|设置所有的子项图标大小。

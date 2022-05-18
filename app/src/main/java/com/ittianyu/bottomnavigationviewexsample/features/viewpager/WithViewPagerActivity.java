@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.ittianyu.bottomnavigationviewexsample.R;
 import com.ittianyu.bottomnavigationviewexsample.common.base.BaseFragment;
 import com.ittianyu.bottomnavigationviewexsample.databinding.ActivityWithViewPagerBinding;
@@ -93,7 +93,7 @@ public class WithViewPagerActivity extends AppCompatActivity {
      */
     private void initEvent() {
         // set listener to change the current item of view pager when click bottom nav item
-        bind.bnve.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bind.bnve.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             private int previousPosition = -1;
 
             @Override
@@ -164,6 +164,7 @@ public class WithViewPagerActivity extends AppCompatActivity {
             return data.size();
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             return data.get(position);

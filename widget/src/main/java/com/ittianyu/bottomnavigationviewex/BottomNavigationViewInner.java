@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.TintTypedArray;
 import androidx.viewpager.widget.ViewPager;
 
@@ -67,11 +68,17 @@ public class BottomNavigationViewInner extends BottomNavigationView {
     public BottomNavigationViewInner(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TintTypedArray a = ThemeEnforcement.obtainTintedStyledAttributes(context, attrs,
-                com.google.android.material.R.styleable.BottomNavigationView,
-                defStyleAttr, com.google.android.material.R.style.Widget_Design_BottomNavigationView,
-                new int[]{com.google.android.material.R.styleable.NavigationBarView_itemTextAppearanceInactive,
-                        com.google.android.material.R.styleable.NavigationBarView_itemTextAppearanceActive});
+        TintTypedArray a = ThemeEnforcement.obtainTintedStyledAttributes(
+            context,
+            attrs,
+            com.google.android.material.R.styleable.BottomNavigationView,
+            defStyleAttr,
+            com.google.android.material.R.style.Widget_Design_BottomNavigationView,
+            new int[] {
+                com.google.android.material.R.styleable.NavigationBarView_itemTextAppearanceInactive,
+                com.google.android.material.R.styleable.NavigationBarView_itemTextAppearanceActive
+            }
+        );
         // clear if you don't have set item icon tint list
         if (!a.hasValue(com.google.android.material.R.styleable.NavigationBarView_itemIconTint)) {
             clearIconTintColor();
@@ -433,25 +440,24 @@ public class BottomNavigationViewInner extends BottomNavigationView {
     }
 
     /**
-     * get OnNavigationItemSelectedListener
+     * get OnItemSelectedListener
      *
      * @return
      */
-    public OnNavigationItemSelectedListener getOnNavigationItemSelectedListener() {
-        // private OnNavigationItemSelectedListener mListener;
-        OnNavigationItemSelectedListener mListener = getField(BottomNavigationView.class, this, "selectedListener");
+    public OnItemSelectedListener getOnItemSelectedListener() {
+        OnItemSelectedListener mListener = getField(BottomNavigationView.class, this, "selectedListener");
         return mListener;
     }
 
     @Override
-    public void setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener listener) {
+    public void setOnItemSelectedListener(@Nullable OnItemSelectedListener listener) {
         // if not set up with view pager, the same with father
         if (null == mMyOnNavigationItemSelectedListener) {
-            super.setOnNavigationItemSelectedListener(listener);
+            super.setOnItemSelectedListener(listener);
             return;
         }
 
-        mMyOnNavigationItemSelectedListener.setOnNavigationItemSelectedListener(listener);
+        mMyOnNavigationItemSelectedListener.setOnItemSelectedListener(listener);
     }
 
     /**
@@ -801,7 +807,7 @@ public class BottomNavigationViewInner extends BottomNavigationView {
 
         if (null == viewPager) {
             mViewPager = null;
-            super.setOnNavigationItemSelectedListener(null);
+            super.setOnItemSelectedListener(null);
             return this;
         }
 
@@ -814,9 +820,9 @@ public class BottomNavigationViewInner extends BottomNavigationView {
         viewPager.addOnPageChangeListener(mPageChangeListener);
 
         // Now we'll add a navigation item selected listener to set ViewPager's current item
-        OnNavigationItemSelectedListener listener = getOnNavigationItemSelectedListener();
+        OnItemSelectedListener listener = getOnItemSelectedListener();
         mMyOnNavigationItemSelectedListener = new MyOnNavigationItemSelectedListener(viewPager, this, smoothScroll, listener);
-        super.setOnNavigationItemSelectedListener(mMyOnNavigationItemSelectedListener);
+        super.setOnItemSelectedListener(mMyOnNavigationItemSelectedListener);
         return this;
     }
 
@@ -856,17 +862,21 @@ public class BottomNavigationViewInner extends BottomNavigationView {
     }
 
     /**
-     * Decorate OnNavigationItemSelectedListener for setupWithViewPager
+     * Decorate OnItemSelectedListener for setupWithViewPager
      */
-    private static class MyOnNavigationItemSelectedListener implements OnNavigationItemSelectedListener {
-        private OnNavigationItemSelectedListener listener;
+    private static class MyOnNavigationItemSelectedListener implements OnItemSelectedListener {
+        private OnItemSelectedListener listener;
         private final WeakReference<ViewPager> viewPagerRef;
         private boolean smoothScroll;
         private SparseIntArray items;// used for change ViewPager selected item
         private int previousPosition = -1;
 
-
-        MyOnNavigationItemSelectedListener(ViewPager viewPager, BottomNavigationViewInner bnve, boolean smoothScroll, OnNavigationItemSelectedListener listener) {
+        MyOnNavigationItemSelectedListener(
+            ViewPager viewPager,
+            BottomNavigationViewInner bnve,
+            boolean smoothScroll,
+            OnItemSelectedListener listener
+        ) {
             this.viewPagerRef = new WeakReference<>(viewPager);
             this.listener = listener;
             this.smoothScroll = smoothScroll;
@@ -881,7 +891,7 @@ public class BottomNavigationViewInner extends BottomNavigationView {
             }
         }
 
-        public void setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener listener) {
+        public void setOnItemSelectedListener(OnItemSelectedListener listener) {
             this.listener = listener;
         }
 

@@ -85,7 +85,7 @@ public class SetupWithViewPagerActivity extends AppCompatActivity {
      */
     private void initEvent() {
         // set listener to do something then item selected
-        bind.bnve.setOnNavigationItemSelectedListener(item -> {
+        bind.bnve.setOnItemSelectedListener(item -> {
             Log.d(TAG, item.getItemId() + " item was selected-------------------");
             // you can return false to cancel select
             return true;

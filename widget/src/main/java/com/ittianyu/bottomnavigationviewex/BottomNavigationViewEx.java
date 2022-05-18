@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
@@ -100,18 +101,18 @@ public class BottomNavigationViewEx extends BottomNavigationViewInner {
     }
 
     @Override
-    public OnNavigationItemSelectedListener getOnNavigationItemSelectedListener() {
+    public OnItemSelectedListener getOnItemSelectedListener() {
         try {
-            return super.getOnNavigationItemSelectedListener();
+            return super.getOnItemSelectedListener();
         } catch (Exception e) {
             return null;
         }
     }
 
     @Override
-    public void setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener listener) {
+    public void setOnItemSelectedListener(@Nullable OnItemSelectedListener listener) {
         try {
-            super.setOnNavigationItemSelectedListener(listener);
+            super.setOnItemSelectedListener(listener);
         } catch (Exception e) {
         }
     }

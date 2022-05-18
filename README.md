@@ -29,7 +29,7 @@ An android lib for enhancing BottomNavigationView.
 |getLargeLabelAt|Get large label at position. Each item has two labels, one is large, the other is small.
 |getSmallLabelAt|Get small label at position. Each item has two labels, one is large, the other is small.
 |getMenuItemPosition|Get menu item position in menu. Return position if success, -1 otherwise.
-|getOnNavigationItemSelectedListener|Get OnNavigationItemSelectedListener.
+|getOnItemSelectedListener|Get OnItemSelectedListener.
 |setCurrentItem|Set the currently checked item.
 |setIconMarginTop|set margin top for icon.
 |setIconSize|Set all item ImageView size.
