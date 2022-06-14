@@ -58,7 +58,7 @@ class MainActivity : BaseActivity<MainPageViewModel>(), ViewDataBindingOwner<Act
     private fun observeUserListData() {
         observeData(viewModel.userListResponse) { result ->
             result?.let {
-                if (!it.dataList.isNullOrEmpty()) {
+                if (it.dataList.isNotEmpty()) {
                     viewModel.cvUserSearchVisibility.value = true
                     userSearchAdapter.submitList(it.dataList)
                 }

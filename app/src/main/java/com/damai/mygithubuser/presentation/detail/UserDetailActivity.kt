@@ -68,7 +68,7 @@ class UserDetailActivity : BaseActivity<UserDetailViewModel>(), UserDetailView,
     private fun observeUserDetailListData() {
         observeData(viewModel.infoAndRepoListResponse) { result ->
             result?.let {
-                if (!it.isNullOrEmpty()) {
+                if (it.isNotEmpty()) {
                     userDetailsAdapter.submitList(it)
                 }
             }

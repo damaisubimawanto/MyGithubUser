@@ -5,6 +5,14 @@
 
     <data>
         <import type="android.view.View" />
+
+        <variable
+            name="isSeperatorGone"
+            type="Boolean" />
+
+        <variable
+            name="data"
+            type="com.damai.mygithubuser.data.model.UserSearchModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/_7sdp"
+            android:text="@{data.displayName}"
             android:textColor="@color/neutral_900"
             android:textSize="@dimen/_13ssp"
             android:textStyle="bold"
@@ -40,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/_7sdp"
+            android:text="@{data.nickname}"
             android:textColor="@color/neutral_900"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintBottom_toBottomOf="@+id/tvUserDisplayName"
@@ -53,6 +63,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/_3sdp"
             android:paddingStart="@dimen/_7sdp"
+            android:text="@{data.jobPosition}"
             android:textColor="@color/neutral_900"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,6 +78,7 @@
             android:paddingTop="@dimen/_10sdp"
             android:paddingStart="@dimen/_7sdp"
             android:paddingBottom="@dimen/_13sdp"
+            android:text="@{data.location}"
             android:textColor="@color/neutral_700"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintStart_toStartOf="@+id/tvUserJobPosition"
@@ -80,6 +92,7 @@
             android:paddingTop="@dimen/_10sdp"
             android:paddingStart="@dimen/_13sdp"
             android:paddingBottom="@dimen/_13sdp"
+            android:text="@{data.email}"
             android:textColor="@color/neutral_700"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintStart_toEndOf="@+id/tvUserLocation"
@@ -91,6 +104,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/_1sdp"
             android:background="@color/neutral_50"
+            android:visibility="@{isSeperatorGone ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

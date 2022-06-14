@@ -2,7 +2,6 @@ package com.damai.mygithubuser.presentation.main.adapter
 
 import android.net.Uri
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -59,23 +58,14 @@ class UserSearchAdapter(
     ): RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(data: UserSearchModel, isSeperatorGone: Boolean) {
-            binding.apply {
-                tvUserDisplayName.text = data.displayName
-                tvUserNickname.text = data.nickname
-                tvUserJobPosition.text = data.jobPosition
-                tvUserLocation.text = data.location
-                tvUserEmail.text = data.email
-                seperator.visibility = if (isSeperatorGone) {
-                    View.GONE
-                } else {
-                    View.VISIBLE
-                }
+            binding.data = data
+            binding.isSeperatorGone = isSeperatorGone
+            binding.executePendingBindings()
 
-                PicassoController.loadImageCircle(
-                    url = data.thumbnail,
-                    imageView = ivUserThumbnail
-                )
-            }
+            PicassoController.loadImageCircle(
+                url = data.thumbnail,
+                imageView = binding.ivUserThumbnail
+            )
 
             when (data.isDataFetched) {
                 null -> {
